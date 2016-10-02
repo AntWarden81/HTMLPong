@@ -1,16 +1,16 @@
 <!doctype html>
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" type="text/javascript"></script> 
-<body onload="startBall()" style="background-color:grey; font-family: Calibri;">
+<body onload="startBall()">
 <h1 style="position:absolute;left:45%;top:10px;font-size:70px;">Pong</h1>
 <h1 style="position:absolute;left:30px;top:80px;">Score 1: <span id="score1">0</span></h1>
 <h1 style="position:absolute;right:30px;top:80px;">Score 2: <span id="score2">0</span></h1>
 <hr style="margin-top:150px;">
-<div id="paddle1"  style="position:absolute;left:0px;top:460px;width:10px;height:150px;background-color:white;">
+<div id="paddle1"  style="position:absolute;left:0px;top:460px;width:10px;height:150px;background-color:black;">
 </div>
-<div id="ball"  style="position:absolute;left:820px;top:510px;width:25px;height:25px;background-color:white;border-radius:50%;">
+<div id="ball"  style="position:absolute;left:820px;top:510px;width:25px;height:25px;background-color:red;border-radius:50%;">
 </div>
-<div id="paddle2"  style="position:absolute;right:0px;top:460px;width:10px;height:150px;background-color:white;">
+<div id="paddle2"  style="position:absolute;right:0px;top:460px;width:10px;height:150px;background-color:black;">
 </div>
 </body>
 <script>
@@ -31,8 +31,8 @@ var score2 = 0;
 function startBall() {
 	// function to reset ball to middle of screen
 	// and send ball in random direction.
-	topPositionOfBall = 510;
-	leftPositionOfBall = 820;
+	topPositionOfBall = Math.floor(window.innerWidth/2);
+	leftPositionOfBall = Math.floor(window.innerHeight/2);
 	if (Math.random() < 0.5) {
 		// determine which direction the ball will travel in.
 		// negative is left, positive is right
@@ -41,39 +41,37 @@ function startBall() {
 		var side = -1
 	}
 	// give multiply direction by whatever speed you want.
-	topSpeedOfBall = side * 10;
-	leftSpeedOfBall = side * 10;
-    console.log('ball start');
+	topSpeedOfBall = side * 2;
+	leftSpeedOfBall = side * 2;
 };
 document.addEventListener('keydown', function (e) {
 		// use listener to manipulate speed of paddle.
 		if (e.keyCode == 87 || e.which == 87) { // W key
-            speedOfPaddle1 = 50;
-            document.getElementById("ball").style.top = topPositionOfBall;
+		// your code here;
 		}
 		if (e.keyCode == 83 || e.which == 83) { // S Key
-            speedOfPaddle1 = 50;
+		// your code here;
 		}
 		if (e.keyCode == 38 || e.which == 38) { // up arrow
-            speedOfPaddle2 = 50;
+		// your code here;
 		}
 		if (e.keyCode == 40 || e.which == 40) { // down arrow
-            speedOfPaddle2 = 50;
+		// your code here;
 		}
 		}, false);
 document.addEventListener('keyup', function (e) {
 		// stop paddle once key is let go.
 		if (e.keyCode == 87 || e.which == 87) {
-		    speedOfPaddle1 = 0;
+		// your code here;
 		}
 		if (e.keyCode == 83 || e.which == 83) {
-            speedOfPaddle1 = 0;
+		// your code here;
 		}
 		if (e.keyCode == 38 || e.which == 38) {
-            speedOfPaddle2 = 0;
+		// your code here;
 		}
 		if (e.keyCode == 40 || e.which == 40) {
-            speedOfPaddle2 = 0;
+		// your code here;
 		}
 		}, false);
 function printDebug() {
@@ -83,26 +81,26 @@ function printDebug() {
 window.setInterval(function show() {
 		// this function displays the screen and updates it
 		// every time we change the position of something.
-		positionOfPaddle1 += speedOfPaddle1;
-		positionOfPaddle2 += speedOfPaddle2;
-		topPositionOfBall += topSpeedOfBall;
-		leftPositionOfBall += leftSpeedOfBall;
+		positionOfPaddle1 += // your code here;
+		positionOfPaddle2 += // your code here;
+		topPositionOfBall += // your code here;
+		leftPositionOfBall += // your code here;
 
 		if (positionOfPaddle1 <= 150) {
 		// don't let paddle1 go higher than the screen.
-            positionOfPaddle1 = 150;
+		// your code here;
 		}
 		if (positionOfPaddle2 <= 150) {
 		// dont let paddle2 go off screen
-            positionOfPaddle2 = 150;
+		// your code here;
 		}
 		if (positionOfPaddle1 >= window.innerHeight - paddleHeight) {
 		// don't let paddle1 go below screen
-            positionOfPaddle1 = window.innerHeight - paddleHeight;
+		// your code here;
 		}
 		if (positionOfPaddle2 > window.innerHeight - paddleHeight) {
 			// don't let paddle2 go below screen
-            positionOfPaddle2 = window.innerHeight - paddleHeight;
+			// your code here;
 		}
 		if (topPositionOfBall <= 150 || topPositionOfBall >= window.innerHeight - ballRadius) {
 			// reverse the topSpeedOfBall once it hits the bottom or top of screen.
@@ -129,12 +127,11 @@ window.setInterval(function show() {
 			}
 		}
 		// update positions of elements and representative scores.
-		document.getElementById("paddle1").style.top = positionOfPaddle1;
-		document.getElementById("paddle2").style.top = positionOfPaddle2;
-		document.getElementById("ball").style.top = topPositionOfBall;
-		document.getElementById("ball").style.left = leftPositionOfBall;
-		document.getElementById('score1').innerHTML = score1;
-		document.getElementById('score2').innerHTML = score2;
-    console.log("updating");
+		document.getElementById("paddle1").style.top = // your code here;
+		document.getElementById("paddle2").style.top = // your code here;
+		document.getElementById("ball").style.top = // your code here;
+		document.getElementById("ball").style.left = // your code here;
+		document.getElementById('score1').innerHTML = // your code here;
+		document.getElementById('score2').innerHTML = // your code here;
 }, 1000/60);
 </script>
