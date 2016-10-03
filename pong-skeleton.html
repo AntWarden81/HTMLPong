@@ -48,17 +48,16 @@ function startBall() {
 document.addEventListener('keydown', function (e) {
 		// use listener to manipulate speed of paddle.
 		if (e.keyCode == 87 || e.which == 87) { // W key
-            speedOfPaddle1 = 50;
-            document.getElementById("ball").style.top = topPositionOfBall;
+            speedOfPaddle1 = -30;
 		}
 		if (e.keyCode == 83 || e.which == 83) { // S Key
-            speedOfPaddle1 = 50;
+            speedOfPaddle1 = 30;
 		}
 		if (e.keyCode == 38 || e.which == 38) { // up arrow
-            speedOfPaddle2 = 50;
+            speedOfPaddle2 = -30;
 		}
 		if (e.keyCode == 40 || e.which == 40) { // down arrow
-            speedOfPaddle2 = 50;
+            speedOfPaddle2 = 30;
 		}
 		}, false);
 document.addEventListener('keyup', function (e) {
@@ -129,12 +128,11 @@ window.setInterval(function show() {
 			}
 		}
 		// update positions of elements and representative scores.
-		document.getElementById("paddle1").style.top = positionOfPaddle1;
-		document.getElementById("paddle2").style.top = positionOfPaddle2;
-		document.getElementById("ball").style.top = topPositionOfBall;
-		document.getElementById("ball").style.left = leftPositionOfBall;
-		document.getElementById('score1').innerHTML = score1;
-		document.getElementById('score2').innerHTML = score2;
-    console.log("updating");
+		document.getElementById("paddle1").style.top = parseInt(positionOfPaddle1) +"px";
+		document.getElementById("paddle2").style.top = parseInt(positionOfPaddle2) +"px";
+		document.getElementById("ball").style.top = parseInt(topPositionOfBall) +"px";
+		document.getElementById("ball").style.left = parseInt(leftPositionOfBall) +"px";
+		document.getElementById('score1').innerHTML = parseInt(score1);
+		document.getElementById('score2').innerHTML = parseInt(score2);
 }, 1000/60);
 </script>
